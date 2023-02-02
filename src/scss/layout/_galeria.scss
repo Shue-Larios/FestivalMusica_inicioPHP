@@ -1,0 +1,61 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+//ordenas la galeria en columnas con mixins
+.galeria{
+    padding: 5rem 0; // se paracion de la palabra Galeria
+    h3{
+        text-align: center; // para que el texto salga centrado
+    }
+}
+
+.galeria-imagenes{
+@include m.resetear-lista; // para que elimine las viñetas y espacios
+@include m.grid(2, 2rem);
+    @include m.telefono {
+        @include m.grid(3, 2rem);
+    }
+    @include m.tablet{
+        @include m.grid(4, 2rem);
+    }
+    @include m.desktop{
+        @include m.grid(6, 2rem);
+    }
+}
+
+//mostrar en grande la imagen
+.overlay{
+    position: fixed; //esto quiere decir que es posicion fija
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center; //centra horizontal y verticalmente
+
+    background-color: rgba(0,0,0,.9); // esto para poner oscuro el fondo cuando abra la imagen grande
+
+    picture{
+        display: block;
+        max-width: 80rem;
+    }
+}
+
+.btn-cerrar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: v.$blanco;
+    color: v.$negro;
+    // para centrar la X que sale mal ordenada
+    display: grid;
+    place-items: center;
+    font-weight: bold; // ppara ponerla negrita
+// para cuando pongan el cursos en la X salga la manita del mouse
+    &:hover{
+       cursor: pointer;
+    }
+}
+

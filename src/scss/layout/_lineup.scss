@@ -1,0 +1,80 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.lineup{
+    background-color: v.$rosa;
+    padding: 5rem 0;
+
+    h3,p{
+        text-align: center;
+        color: v.$blanco;
+    }
+    .dia{
+        text-transform: uppercase;
+     margin: 5rem 0;
+    }
+   
+}
+
+.escenario-contenedor{
+   @include m.tablet{
+       @include m.grid(2, 5rem)
+   }
+   p{
+       color: v.$negro;
+   }
+}
+
+.escenario{
+    padding-top: 2rem;
+    p{
+        &:after {
+            content: " ";
+            display: block;
+            width: 20rem;
+            height: 10rem;
+            background-size: 15rem; // para que sea mas pequeño que el contenido
+            background-repeat: no-repeat; // para no repetir las imagenes
+            background-position: center center; // para que quede al centro exacto
+            margin: 2rem auto 0 auto; // de esta forma queda centrado 
+        }
+    }
+}
+// la imagen de ponia muy grande y para arreglar eso puse :after
+.edm .nombre-escenario:after{
+    
+    background-image: url(../img/icono_edm.png);
+}
+
+.rock .nombre-escenario:after{
+    background-image: url(../img/icono_rock.png);
+}
+
+.calendario{
+    // coloco m xk es la variable q dice q es un mixins
+    @include m.resetear-lista;
+    li{
+        padding: 1.5rem;
+        font-weight: 700;
+        span{
+            font-weight: 400;
+        }
+    }
+}
+
+.bg-amarillo{
+    background-color: v.$amarillo;
+    // para seleccionar el 1 o segundo etc odd para elegir los impares
+    li:nth-child(odd){
+        //darken para hacer un color mas oscuro
+        background-color: darken($color: v.$amarillo, $amount: 15);
+    }
+}
+
+.bg-verde{
+    background-color: v.$verde;
+    li:nth-child(odd){
+        //darken para hacer un color mas oscuro
+        background-color: darken($color: v.$verde, $amount: 10);
+    }
+}
